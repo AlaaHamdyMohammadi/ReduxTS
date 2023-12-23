@@ -1,21 +1,22 @@
-interface RepositoriesState{
-    loading: boolean;
-    error: string | null;
-    data: string[];
+interface RepositoriesState {
+  loading: boolean;
+  error: string | null;
+  data: string[];
 }
 
-const reducer = (state: RepositoriesState, action: any) => {
-    switch(action.type){
-        case 'search_repositories': //Guest seach button every thing is empty
-            return {loading: true, error: null, data: []};
-            case 'search_repositories_success':
-            return {loading: false, error: null, data: action.payload};
-            case 'search_repositories_error':
-            return {loading: false, error: action.payload, data: []};
+const reducer = (state: RepositoriesState, action: any): RepositoriesState => {
+  //Must determine the return of reducerFunc to prevent any weird data, so just the types of data into the interface
+  switch (action.type) {
+    case "search_repositories": //Guest seach button every thing is empty
+      return { loading: true, error: null, data: [] };
+    case "search_repositories_success":
+      return { loading: false, error: null, data: action.payload };
+    case "search_repositories_error":
+      return { loading: false, error: action.payload, data: [] };
 
-        default:
-            return state;
-    }
-}
+    default:
+      return state;
+  }
+};
 
 export default reducer;
