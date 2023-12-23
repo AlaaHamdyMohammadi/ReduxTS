@@ -4,7 +4,12 @@ interface RepositoriesState {
   data: string[];
 }
 
-const reducer = (state: RepositoriesState, action: any): RepositoriesState => {
+interface Action{
+    type: string;
+    payload?: any;
+}
+
+const reducer = (state: RepositoriesState, action: Action): RepositoriesState => {
   //Must determine the return of reducerFunc to prevent any weird data, so just the types of data into the interface
   switch (action.type) {
     case "search_repositories": //Guest seach button every thing is empty
